@@ -1,0 +1,26 @@
+[
+  {
+    "state": "Gujarat",
+    "district": "Surat",
+    "market": "Surat APMC",
+    "commodity": "Onion",
+    "variety": "Other",
+    "grade": "FAQ",
+    "arrival_date": "22/07/2026",
+    "min_price": 900,
+    "max_price": 3100,
+    "modal_price": 2000
+  },
+  {
+    "state": "Gujarat",
+    "district": "Anand",
+    "market": "Khambhat(Veg Yard Khambhat) APMC",
+    "commodity": "Onion",
+    "variety": "Other",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 2500,
+    "max_price": 3000,
+    "modal_price": 2800
+  }
+]

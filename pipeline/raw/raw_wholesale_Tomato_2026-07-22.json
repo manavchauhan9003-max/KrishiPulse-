@@ -1,0 +1,50 @@
+[
+  {
+    "state": "Gujarat",
+    "district": "Gandhinagar",
+    "market": "Mansa(Manas Veg Yard) APMC",
+    "commodity": "Tomato",
+    "variety": "Tomato",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 2500,
+    "max_price": 2500,
+    "modal_price": 2500
+  },
+  {
+    "state": "Gujarat",
+    "district": "Amreli",
+    "market": "Damnagar APMC",
+    "commodity": "Tomato",
+    "variety": "Local",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 3000,
+    "max_price": 3000,
+    "modal_price": 3000
+  },
+  {
+    "state": "Gujarat",
+    "district": "Surat",
+    "market": "Surat APMC",
+    "commodity": "Tomato",
+    "variety": "Other",
+    "grade": "FAQ",
+    "arrival_date": "22/07/2026",
+    "min_price": 900,
+    "max_price": 2800,
+    "modal_price": 1850
+  },
+  {
+    "state": "Gujarat",
+    "district": "Anand",
+    "market": "Khambhat(Veg Yard Khambhat) APMC",
+    "commodity": "Tomato",
+    "variety": "Other",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 2500,
+    "max_price": 3000,
+    "modal_price": 2500
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "state": "Gujarat",
+    "district": "Anand",
+    "market": "Khambhat(Veg Yard Khambhat) APMC",
+    "commodity": "Potato",
+    "variety": "Desi",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 1000,
+    "max_price": 1800,
+    "modal_price": 1500
+  },
+  {
+    "state": "Gujarat",
+    "district": "Surat",
+    "market": "Surat APMC",
+    "commodity": "Potato",
+    "variety": "Other",
+    "grade": "FAQ",
+    "arrival_date": "22/07/2026",
+    "min_price": 500,
+    "max_price": 1650,
+    "modal_price": 1075
+  }
+]

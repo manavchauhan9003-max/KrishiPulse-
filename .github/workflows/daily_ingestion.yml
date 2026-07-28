@@ -1,0 +1,44 @@
+name: Daily Wholesale Price Ingestion
+
+on:
+  schedule:
+    - cron: "30 3 * * *" # 03:30 UTC = 9:00 AM IST
+    - cron: "0 9 * * *" # 09:00 UTC = 2:30 PM IST
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ingestion script
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+        run: python pipeline/load_wholesale_data.py
+
+      - name: Load retail manual entries
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          RETAIL_SHEET_URL: ${{ secrets.RETAIL_SHEET_URL }}
+        run: python ingestion/load_retail_manual.py
+
+      - name: Generate retail model
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python ingestion/generate_retail_model.py
+
+      - name: Run anomaly detection
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python pipeline/run_anomaly_detection.py

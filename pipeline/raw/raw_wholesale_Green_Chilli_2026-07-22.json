@@ -1,0 +1,50 @@
+[
+  {
+    "state": "Gujarat",
+    "district": "Amreli",
+    "market": "Damnagar APMC",
+    "commodity": "Green Chilli",
+    "variety": "Green Chilly",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 6000,
+    "max_price": 6000,
+    "modal_price": 6000
+  },
+  {
+    "state": "Gujarat",
+    "district": "Surat",
+    "market": "Surat APMC",
+    "commodity": "Green Chilli",
+    "variety": "Green Chilly",
+    "grade": "FAQ",
+    "arrival_date": "22/07/2026",
+    "min_price": 2000,
+    "max_price": 5500,
+    "modal_price": 3750
+  },
+  {
+    "state": "Gujarat",
+    "district": "Anand",
+    "market": "Khambhat(Veg Yard Khambhat) APMC",
+    "commodity": "Green Chilli",
+    "variety": "Other",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 4000,
+    "max_price": 4500,
+    "modal_price": 4000
+  },
+  {
+    "state": "Gujarat",
+    "district": "Gandhinagar",
+    "market": "Mansa(Manas Veg Yard) APMC",
+    "commodity": "Green Chilli",
+    "variety": "Other",
+    "grade": "Local",
+    "arrival_date": "22/07/2026",
+    "min_price": 4000,
+    "max_price": 5000,
+    "modal_price": 4000
+  }
+]

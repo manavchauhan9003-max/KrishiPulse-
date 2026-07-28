@@ -1,0 +1,14 @@
+[
+  {
+    "state": "Gujarat",
+    "district": "Rajkot",
+    "market": "Gondal(Veg.market Gondal) APMC",
+    "commodity": "Potato",
+    "variety": "Potato",
+    "grade": "Local",
+    "arrival_date": "06/07/2026",
+    "min_price": 800,
+    "max_price": 1300,
+    "modal_price": 1050
+  }
+]

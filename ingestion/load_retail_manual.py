@@ -71,7 +71,7 @@ def main():
         city = row['city'].strip()
         platform = row['platform'].strip()
         unit = row['unit'].strip()
-        confidence_note = row['notes'].strip() or None
+        confidence_note = None
 
         cur.execute(
             """

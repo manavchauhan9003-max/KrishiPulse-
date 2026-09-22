@@ -29,6 +29,8 @@ def fetch_all_records(crop):
     offset = 0
     total = None
 
+    session = create_session()
+
     while True:
         params = {
             'api-key': DATA_GOV_API_KEY,
@@ -38,24 +40,40 @@ def fetch_all_records(crop):
             'filters[state.keyword]': 'Gujarat',
             'filters[commodity.keyword]': crop
         }
-        response = requests.get(API_URL, params=params, headers=HEADERS, timeout=30)
-        if response.status_code != 200:
-            print(f"Error fetching {crop} at offset {offset}: {response.status_code}")
+
+        try:
+            response = session.get(
+                API_URL,
+                params=params,
+                timeout=(10, 60)
+            )
+            response.raise_for_status()
+
+        except requests.exceptions.RequestException as e:
+            print(
+                f"ERROR fetching {crop} at offset {offset}: {e}"
+            )
             break
 
         data = response.json()
         records = data.get('records', [])
+
         if total is None:
             total = int(data.get('total', 0))
 
         all_records.extend(records)
-        print(f"{crop}: fetched {len(all_records)} of {total} records")
+
+        print(
+            f"{crop}: fetched {len(all_records)} of {total} records"
+        )
 
         if len(records) < PAGE_LIMIT or len(all_records) >= total:
             break
 
         offset += PAGE_LIMIT
-        time.sleep(0.5)
+
+        # Small delay between API requests
+        time.sleep(1)
 
     return all_records
 

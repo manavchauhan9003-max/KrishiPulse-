@@ -9,6 +9,7 @@ on:
 jobs:
   ingest:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -20,6 +21,50 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Diagnose Data.gov.in connectivity
+        env:
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          import requests
+
+          url = (
+              "https://api.data.gov.in/resource/"
+              "9ef84268-d588-465a-a308-a864a43d0070"
+          )
+
+          api_key = os.environ.get("DATA_GOV_API_KEY", "").strip()
+
+          if not api_key:
+              raise SystemExit(
+                  "DATA_GOV_API_KEY secret is missing or empty."
+              )
+
+          params = {
+              "api-key": api_key,
+              "format": "json",
+              "limit": 1,
+          }
+
+          try:
+              response = requests.get(
+                  url,
+                  params=params,
+                  timeout=(10, 20),
+              )
+              print("HTTP status:", response.status_code)
+              response.raise_for_status()
+              print("API connectivity test passed.")
+          except requests.RequestException as exc:
+              print(
+                  "API connectivity test failed:",
+                  type(exc).__name__,
+                  str(exc),
+              )
+              raise
+          PY
 
       - name: Run ingestion script
         env:

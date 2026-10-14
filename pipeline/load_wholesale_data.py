@@ -5,6 +5,24 @@ from datetime import datetime
 from dotenv import load_dotenv
 import requests
 import psycopg2
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+session = requests.Session()
+
+retry_strategy = Retry(
+    total=3,
+    connect=3,
+    read=2,
+    backoff_factor=2,
+    status_forcelist=[429, 500, 502, 503, 504],
+    allowed_methods=["GET"],
+)
+
+session.mount(
+    "https://",
+    HTTPAdapter(max_retries=retry_strategy)
+)
 
 load_dotenv()
 DATABASE_URL = os.getenv('DATABASE_URL')
@@ -25,6 +43,13 @@ HEADERS = {
 PAGE_LIMIT = 100
 
 def fetch_all_records(crop):
+    response = session.get(
+    API_URL,
+    params=params,
+    headers=HEADERS,
+    timeout=(10, 30),
+    )
+    response.raise_for_status()
     all_records = []
     offset = 0
     total = None
